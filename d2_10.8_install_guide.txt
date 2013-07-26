@@ -1,0 +1,398 @@
+I. Overview, Purpose, and a Little Bit of Setup
+II. Questions you may have
+III. XCode
+IV. Homebrew *OR* Macports
+V. Wine
+VI. XQuartz
+VII. Diablo 2 and LoD
+VIII. Gateway Editor
+IX. Maphack and Multi
+X. Using Diablo and Multibox
+XI. Quality of Life Improvements, Maphack
+
+
+DON'T RUN DIABLO UNTIL YOU HAVE COMPLETED AT LEAST STEP VIII.
+
+I. Purpose, overview, and a Little Bit of Setup:
+
+-------
+Purpose
+-------
+
+Our aim is to have a functional copy of Diablo 2 running with a working maphack and multiboxing abilities running in OSX 10.7 or 10.8 without need for virtualization software (other than wine) or dual booting.
+
+--------
+Overview
+--------
+
+We're going to need some tools:
+
+-Xcode with Command Line Tools installed (3.5 Gb available for free from Apple)
+	
+	Why we need this:
+	
+	Xcode (and the command line tools for it) adds support for programming languages that run other software we will install (namely Macports and Homebrew).
+
+-Macports OR Homebrew installed (one and not the other, they can interfere with one another)
+
+	Why we need this:
+	
+	Both of these programs are command line tools that allow us to install wine without having to deal with Wineskin Winery or PlayOnMac (While these are both examples of good software, they are not quite customizable enough for our use.  Trust me, I've tried them).
+
+-Wine installed
+
+	Why we need this:
+	
+Wine is the "magic" that makes this whole process work.  Wine allows you to run *some* Windows software from the command line in OSX
+
+-XQuartz installed
+
+	Why we need this:
+
+XQuartz is a window manager.  That's about all I can say because I don't really know the details of how it works.  Suffice it to say that it's what Diablo and the Maphack run in when they're...  running.
+
+-A working *Windows* (.exe) version of Diablo 2 and LOD or the Windows downloaders from the Battle.net site (does not have to be legitimate, but you will get install them in slightly different ways depending on how you get hold of them)
+
+	Why we need this:
+
+You want to play Diablo 2 don't you?
+
+We need a Windows version because we will be using wine to run it, and therefore need a .exe for it to work.
+
+-A working *Windows* gateway editor (.exe)
+
+	Why we need this:
+
+You're here because you don't want to play on battle.net.
+
+-Files for the maphack and multibox
+
+	Why we need this:
+
+	Why not?
+
+
+So, in totality, we need:
+
+-Xcode with Command Line Tools installed (3.5 Gb available for free from Apple)
+-Macports OR Homebrew installed (one and not the other, both free)
+-Wine installed (free)
+-XQuartz installed (free)
+-A working *Windows* (.exe) version of Diablo 2 and LOD or the Windows downloaders from the Battle.net site  (free if you own a copy... otherwise I leave it up to your interneting abilities) 
+-A working *Windows* gateway editor (.exe)
+-Files for the maphack and multibox
+
+-----------
+Brief Setup
+-----------
+
+I find it helpful to have OSX show hidden files (the .wine folder which we will discuss later is hidden).
+
+To do this, open a terminal and type:
+
+	defaults write com.apple.finder AppleShowAllFiles TRUE
+
+Hit enter, then type
+
+	killall Finder
+
+This will restart Finder with hidden files shown.  (You may notice .ds_store and stuff show up in every folder, that's fine for now.
+
+You can turn off hidden files by doing the above again but changing TRUE to FALSE
+
+----
+
+I also find it helpful to set my function keys to work for diablo and not for volume functions and the like by default (they will work as such when fn is pressed).  This can be changed (and changed back) in System Preferences -> Keybard -> Use all F1, F2, etc. keys as standard function keys.  Check the box. (Uncheck it later if you don't like this setup).
+	
+=============
+II. Questions
+=============
+
+You might have a few questions about why we're doing things a certain way or... whatever.
+
+I'll attempt to answer the ones I can think of as best we can so we're on the same page before we start.
+
+----
+
+Q: Xcode is 3.5 gigabytes!  Do we need really this?
+
+A: In short, yes.  It's a necessary component of this guide, and there's no way around this.  Given that a bootcamp partition is a minimum 10-16 GB and a virtual machine with Windows & will probably take up more than 3 Gb, this is actually a pretty good option.
+
+
+----
+
+Q: Why aren't we using BH instead?
+
+A: I have tried and I have tried to get BH to work.  Maybe someday in the future I will.  I did get it running all of once, and then it wouldn't load ever again.  Right now we're going with a limited maphack *that works.*  Something is better than nothing, right?
+
+----
+
+Q: What the fuck?  My homebrew/macports installation is giving me errors about missing something.  (Hopefully this one doesn't come up)
+
+A:  I will try and cover this as best I can in the MacPorts/Homebrew section.  Google is your friend (that's how I solved problems that arose when I was figuring all this out).  So is stack overflow.
+
+
+==========
+III. XCode
+==========
+
+https://developer.apple.com/xcode/
+
+1. Download and install and run XCode  (You can cancel out of the welcome screen)
+
+2. Go to to XCode -> Preferences  (or hit Command + , )
+
+3. There should be a tab labeled Downloads.  Click it.
+
+4. Install the command line tools.
+
+5. Restart your computer (not sure it's necessary, but it can't hurt)
+
+
+==========================
+IV. Homebrew *OR* Macports
+==========================
+
+ONLY INSTALL HOMEBREW *OR* MACPORTS, NOT BOTH
+
+I prefer homebrew
+
+http://www.davidbaumgold.com/tutorials/wine-mac/#part-0
+
+This tutorial on installing wine using homebrew is great.  Start at part 1: Installing homebrew (we already have XCode)
+
+This will work fine provided you DO NOT have macports already installed.  The two installations will interfere with one another.
+
+If you encounter errors in your homebrew installation, a likely culprit is some files that need to be removed and rewritten.  This is not a big deal.
+
+Try these sites:
+https://github.com/mxcl/homebrew/issues/15478
+http://apple.stackexchange.com/questions/68426/installing-wine-with-homebrew
+
+Keep trying!  I ran into a bunch of errors when I first installed homebrew.  With enough googling and perserverance, I worked through them and got homebrew running.
+
+----------
+
+If you happen to have macports installed already, skip to the next step and use them.
+
+=======
+V. Wine
+=======
+
+You can keep following the instructions from the homebrew and wine installation website if you'd like.  Nothing too complicated
+
+With homebrew you should be doing something like this (bear in mind the $ is not part of what you type):
+	
+	$brew install wine
+
+With macports:
+
+	$sudo port install wine
+
+
+Hopefully this all goes smoothly.  If not, google.
+
+===========
+VI. XQuartz
+===========
+
+http://xquartz.macosforge.org/landing/
+
+1. Download the dmg and open it.
+
+2. Run XQuartz.pkg  (should be easy install)
+
+3. That one was easy!
+
+=====================
+VII. Diablo 2 and LoD
+=====================
+
+I prefer to install from the downloader from battle.net, but I will cover how to do it with a complete D2 folder as well.
+
+Something to note, if you're using the b.net download option, make sure you add an authenticator to your account.  It's not necessary, but if you connect from different ip's and try and install too many times they start locking you out of your account.  Pain in the ass.
+
+-----------------------
+With Loaders from b.net
+-----------------------
+
+1. Log on to the blizzard site and into your account.  Find the downloads page for D2 and LoD, and download the *Windows* version of each downloader.
+
+2. Copy and paste your cd keys into a text file.  It makes life easier.
+
+3. Open up your terminal and type wine and *don't* hit enter.
+
+4. Open up your downloads folder (or wherever you saved the D2 downloaders to, and drag the D2 downloader (not LoD) into your terminal and drop it there.
+
+	It should look something like this:
+	
+	online~:online$ wine /Users/will/Downloads/D2_loader.exe 
+
+	(the file has a slightly different name from this, but you get the idea)
+
+5. Hit enter.  The downloader should run.  If prompted for an install directory, you want to put it in "Program Files" in the C drive.
+ 
+Wait for it to finish, and install when it prompts you to.  (Remember those cd keys you cut and pasted?  To paste them in an XQuarts window it's control + v rather than command + v)
+
+6.  Repeat for the expansion.
+
+7. Do not run Diablo II yet! We will get there soon!
+
+
+---------------------------------------------
+With full D2 directory from a windows install
+---------------------------------------------
+
+1. Find your D2 directory on your windows machine.  (Most likely in program files if you don't know where to look)
+
+2. Copy the *entire* folder to a flash drive (you'll need at least 2 Gb or so free).
+
+3. Plug the flash drive into your mac and copy the whole folder to .wine/drive_c/Program Files  (The .wine folder is in your home directory, the one with your user name)
+
+4. That should be it.
+
+5. Do not run Diablo II yet! We will get there soon!
+
+
+----------
+Suggestion
+----------
+
+I find it helpful to drag my Diablo 2 folder into the sidebar in finder at this point so I have easy access to it.  It should be located at:
+
+	~/.wine/drive_c/program_files/Diablo II
+
+
+====================
+VIII. Gateway Editor
+====================
+
+http://www.icyhell.net/2008/05/06/blizzard-battlenet-gateway-editor-v3010702/
+
+1. Download the gateway editor.
+
+2. Open a terminal window and type wine and then drop the gateway editor's .exe onto the terminal window and hit enter.
+
+3. The editor should start up.  Add a new gateway for slashdiablo and make sure it's the default (I deleted my bnet gateways because I didn't see a need to keep them, and that way I know I'm always connecting to slash)
+
+Server settings (In case you forgot):
+
+name: *whatever you like*
+zone: -8
+server ip: slashd.verris.ca
+
+4. Close the editor  (You shouldn't need it again.
+
+================================
+IX. Installing Maphack and Multi
+================================
+
+-------
+Maphack
+-------
+
+The only maphack I could get working was D2ME.  It's rather light on features, but still allows whole areas to be revealed (no whole game option D:)
+
+1. Download D2ME files hosted on github at:
+
+	link
+
+2. d2me.exe and d2me.dll should be in the same folder. This folder isn't required to be d2 folder.  I put mine in a folder called d2me inside my Diablo 2 folder.
+
+3. Maphack is ready to be run.
+
+--------
+Multibox
+--------
+
+1. Download modified d2gfx.dll from github:
+
+	link
+
+2. Save a copy of your old d2gfx.dll if you want to be able to revert in case things screw up.
+
+3. Copy and paste (or drag or whatever) the new d2gfx.dll into your diablo folder
+
+==========================================
+X.  Using Diablo, Multiboxing, and Maphack
+==========================================
+
+Command + Option + a  <---- Remember this
+
+This is the escape sequence to get out of XQuartz windows.  Command + Tab will not work.  It will work to switch back to XQuartz from another application however.  This is how you will get out of one diablo screen and start another for multibox or maphack.
+
+
+---------
+Shortcuts
+---------
+
+
+Rather than finding my Diablo 2 game every time or typing it in manually, I edited my .bash_profile to give me some typeable shortcuts to my Diablo 2 game and maphack.
+
+1. Open up a terminal window.  You should be in your home directory (username)
+
+	For example, if my computer name (first) and user name (second) were "online":
+
+	online:~online$
+
+2. Type in (the stuff after the $):
+
+	online:~online$nano .bash_profile
+	
+	You're now in the command line text editor Nano, with your .bash_profile file open.
+
+3. Add these two lines:
+
+alias maphack="wine .wine/drive_c/Program\ Files/Diablo\ II/d2me/d2me.exe "
+alias diablo="wine .wine/drive_c/Program\ Files/Diablo\ II/Diablo\ II.exe -direct -txt -w"
+
+These shortcuts are now saved for use permanently.
+
+4. Hit control + x to close the file.  Hit Y when prompted to overwrite (Y/N).  Then hit enter.
+
+5. Close your current terminal window and open a new one (.bash_profile loads when your terminal starts running a new window) 
+
+6. Now you can start Diablo 2 by typing diablo into your console and hitting enter.  Start your maphack by typing maphack and hitting enter.
+
+
+------------------------------------
+Running a Multiboxed D2 with Maphack
+------------------------------------
+
+Do this after running diablo and connecting to slash at least once to apply patches
+
+1. Open your terminal and type diablo and hit enter.  A copy of diablo should run.  Ignore any output in the terminal unless Diablo doesn't run.
+
+2. Hit option + command + a to escape the window and return to your terminal.
+
+3. If the terminal window doesn't show online:~online$ (your equivalent), try hitting control + c one or two times.  This should return you to online:~online$, where you can launch another instance of diablo.
+
+4. Once you have four windows running, you can load up the maphack by typing maphack.  The window should launch in XQuartz.  You can then load your D2 games with the maphack by selecting them and clicking the load button.  I then like to minimize the maphack window and escape XQuartz and return so it no longer shows.  Personal preference
+
+5. You can switch between your diablo screens with command + (number).  You can check the "Window" menu in XQuartz to see the list of active windows after you hit option + command + a to escape XQuartz.
+	
+
+
+--------------------------
+Credit Where Credit is Due
+--------------------------
+
+I could not have done this by myself.  Those deserving thanks are:
+
+-The creators of D2ME.  While I prefer BH, it's a working maphack for OSX and for that reason alone it's awesome.
+
+-The development team of wine.  Bringing shitty windows software to your mac.
+
+-Pretty much any developer who worked on any of the software we're using.
+
+-You guys.  It's the community that makes slashdiablo what it is.
+
+
+---------------
+Problem Solving
+---------------
+
+Hit me up on reddit if you're really struggling and Lord Google can't help you.  I'll do what I can. On that note, if you delve deep enough into google, the solution to your problem is probably out there.
+
+Reddit: iforgotthequestion
+In game: online
