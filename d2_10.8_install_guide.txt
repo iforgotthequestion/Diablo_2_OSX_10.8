@@ -345,9 +345,9 @@ Maphack
 The only maphack I could get working was D2ME.  It's rather light on features, but still allows
 whole areas to be revealed (no whole game option D:)
 
-1. Download D2ME files hosted on github at:
+1. Download D2ME files hosted on github at (click on the files and there should be a button on the right that says "raw":
 
-	link
+	https://github.com/iforgotthequestion/Diablo_2_OSX_10.8
 
 2. d2me.exe and d2me.dll should be in the same folder. This folder isn't required to be d2 folder.
 I put mine in a folder called d2me inside my Diablo 2 folder.
@@ -358,9 +358,9 @@ I put mine in a folder called d2me inside my Diablo 2 folder.
 Multibox
 --------
 
-1. Download modified d2gfx.dll from github:
+1. Download modified d2gfx.dll from github (again click the file then click "raw")
 
-	link
+	https://github.com/iforgotthequestion/Diablo_2_OSX_10.8
 
 2. Save a copy of your old d2gfx.dll if you want to be able to revert in case things screw up.
 
