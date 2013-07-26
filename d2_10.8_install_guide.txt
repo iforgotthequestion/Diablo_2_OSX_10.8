@@ -397,10 +397,10 @@ to give me some typeable shortcuts to my Diablo 2 game and maphack.
 	
 	You're now in the command line text editor Nano, with your .bash_profile file open.
 
-3. Add these two lines:
+3. Add these two lines inserting in your username:
 
 alias maphack="wine .wine/drive_c/Program\ Files/Diablo\ II/d2me/d2me.exe "
-alias diablo="wine .wine/drive_c/Program\ Files/Diablo\ II/Diablo\ II.exe -direct -txt -w"
+alias diablo="wine /Users/YOUR_USERNAME_HERE/.wine/drive_c/Program\ Files/Diablo\ II/Diablo\ II.exe -direct -txt -w"
 
 These shortcuts are now saved for use permanently.
 
