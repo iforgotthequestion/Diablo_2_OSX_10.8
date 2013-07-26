@@ -17,7 +17,7 @@ I. Purpose, overview, and a Little Bit of Setup:
 
 -------
 Purpose
--------
+------- 
 
 Our aim is to have a functional copy of Diablo 2 running with a working maphack and multiboxing abilities running in OSX 10.7 or 10.8 without need for virtualization software (other than wine) or dual booting.
 
