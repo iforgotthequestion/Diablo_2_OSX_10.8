@@ -37,7 +37,7 @@ We're going to need some tools:
 	Xcode (and the command line tools for it) adds support for programming languages that run
 	other software we will install (namely Macports and Homebrew).
 
--Macports OR Homebrew installed (one and not the other, they can interfere with one another)
+-Macports OR Homebrew installed (one and not the other, they can interfere with one another). I prefer homebrew, and this guide will rely on it.
 
 	Why we need this:
 	
@@ -73,13 +73,13 @@ We need a Windows version because we will be using wine to run it, and therefore
 
 	Why we need this:
 
-You're here because you don't want to play on battle.net.
+If you plan on playing on a non-Battle.net server (private, or otherwise), this is mandatory.
 
 -Files for the maphack and multibox
 
 	Why we need this:
 
-	Why not?
+You can skip these if you just want a vanilla install (in which case I recommend just using Wineskin Winery or PlayOnMac), but the purpose of using wine specificially is to get these tools working.
 
 
 So, in totality, we need:
@@ -148,7 +148,7 @@ probably take up more than 3 Gb, this is actually a pretty good option.
 
 ----
 
-Q: Why aren't we using BH instead?
+Q: Why aren't we using BH (maphack) instead?
 
 A: I have tried and I have tried to get BH to work.  Maybe someday in the future I will.  
 I did get it running all of once, and then it wouldn't load ever again.  Right now we're going
@@ -162,12 +162,14 @@ Q: What the fuck?  My homebrew/macports installation is giving me errors about m
 
 A:  I will try and cover this as best I can in the MacPorts/Homebrew section. 
 Google is your friend (that's how I solved problems that arose when I was figuring all this out).  
-So is stack overflow. PM me if you really get stuck.
+So is stack overflow. 
 
 
 ==========
 III. XCode
 ==========
+
+Note: Newer versions of XCode should install the command line tools by default.  If not, try following steps 2-4.
 
 https://developer.apple.com/xcode/
 
@@ -190,9 +192,10 @@ ONLY INSTALL HOMEBREW *OR* MACPORTS, NOT BOTH
 
 I prefer homebrew
 
+This tutorial is great, and we will be following it for the install of homebrew, wine, and xquartz:
 http://www.davidbaumgold.com/tutorials/wine-mac/#part-0
 
-This tutorial on installing wine using homebrew is great.  Start at part 1: Installing homebrew 
+Start at part 1: Installing homebrew 
 (we already have XCode)
 
 This will work fine provided you DO NOT have macports already installed.  The two installations
@@ -210,19 +213,21 @@ and perserverance, I worked through them and got homebrew running.
 
 ----------
 
-If you happen to have macports installed already, skip to the next step and use them.
+If you happen to have macports installed already, I assume you know what you're doing to some degree, so skip to the next step and use that instead of homebrew.
 
 =======
 V. Wine
 =======
 
 You can keep following the instructions from the homebrew and wine installation website if you'd 
-like.  Nothing too complicated
+like.  Nothing too complicated.
 
 With homebrew you should be doing something like this (bear in mind the $ is not part of what 
 you type):
 	
 	$brew install wine
+	
+Note: XQuartz has been dropped in newer versions of OSX (10.10, and potentially 10.9).  Homebrew *should* prompt you to install it during installation, so use the commands provided by homebrew in the terminal to install it, then go back and install wine.	
 
 With macports:
 
@@ -234,6 +239,8 @@ Hopefully this all goes smoothly.  If not, google.
 ===========
 VI. XQuartz
 ===========
+
+Note: In trying to access this site recently, I have been unable to reach the server.  Homebrew should install xquartz during its own installation (see V.), and so you can likely skip these steps.
 
 http://xquartz.macosforge.org/landing/
 
@@ -250,7 +257,7 @@ VII. Diablo 2 and LoD
 I prefer to install from the downloader from battle.net, but I will cover how to do it with 
 a complete D2 folder as well.
 
-Something to note, if you're using the b.net download option, make sure you add an authenticator
+Note: If you're using the b.net download option, make sure you add an authenticator
 to your account.  It's not necessary, but if you connect from different ip's and try and install
 too many times they start locking you out of your account.  Pain in the ass.
 
@@ -261,7 +268,7 @@ With Loaders from b.net
 1. Log on to the blizzard site and into your account.  Find the downloads page for D2 and LoD, 
 and download the *Windows* version of each downloader.
 
-2. Copy and paste your cd keys into a text file.  It makes life easier.
+2. Copy and paste your cd keys into a text file.  It makes life easier when installing.
 
 3. Open up your terminal and type wine and *don't* hit enter.
 
@@ -278,7 +285,7 @@ downloader (not LoD) into your terminal and drop it there.
 it in "Program Files" in the C drive.
  
 Wait for it to finish, and install when it prompts you to.  (Remember those cd keys you cut and 
-pasted?  To paste them in an XQuarts window it's control + v rather than command + v)
+pasted?  To paste them in an XQuartz window it's control + v rather than command + v)
 
 6.  Repeat for the expansion.
 
@@ -323,10 +330,10 @@ http://www.icyhell.net/2008/05/06/blizzard-battlenet-gateway-editor-v3010702/
 2. Open a terminal window and type wine and then drop the gateway editor's .exe onto the terminal
 window and hit enter.
 
-3. The editor should start up.  Add a new gateway for slashdiablo and make sure it's the default
+3. The editor should start up.  Add a new gateway for your private server if going that route and make sure it's the default
 (I deleted my bnet gateways because I didn't see a need to keep them, and that way I know I'm always connecting to slash)
 
-Server settings (In case you forgot):
+Note: Server settings for SlashDiablo (reddit private server):
 
 name: *whatever you like*
 zone: -8
@@ -345,11 +352,11 @@ Maphack
 The only maphack I could get working was D2ME.  It's rather light on features, but still allows
 whole areas to be revealed (no whole game option D:)
 
-1. Download D2ME files hosted on github at (click on the files and there should be a button on the right that says "raw":
+1. Download D2ME files hosted on github at (click on the files and there should be a button on the right that says "raw"):
 
 	https://github.com/iforgotthequestion/Diablo_2_OSX_10.8
 
-2. d2me.exe and d2me.dll should be in the same folder. This folder isn't required to be d2 folder.
+2. d2me.exe and d2me.dll should be in the same folder. This folder isn't required to be in the d2 folder.
 I put mine in a folder called d2me inside my Diablo 2 folder.
 
 3. Maphack is ready to be run.
@@ -385,7 +392,7 @@ Shortcuts
 Rather than finding my Diablo 2 game every time or typing it in manually, I edited my .bash_profile
 to give me some typeable shortcuts to my Diablo 2 game and maphack.
 
-1. Open up a terminal window.  You should be in your home directory (username)
+1. Open up a terminal window.  You should be in your home directory (username).  Don't freak out if it's slightly different.
 
 	For example, if my computer name (first) and user name (second) were "online":
 
@@ -417,7 +424,7 @@ maphack by typing maphack and hitting enter.
 Running a Multiboxed D2 with Maphack
 ------------------------------------
 
-Do this after running diablo and connecting to slash at least once to apply patches
+Do this after running diablo and connecting to your server at least once to apply patches
 
 1. Open your terminal and type diablo and hit enter.  A copy of diablo should run.  Ignore any 
 output in the terminal unless Diablo doesn't run.
@@ -448,24 +455,12 @@ I could not have done this by myself.  Those deserving thanks are:
 
 -The developers of wine.  Bringing shitty windows software to your mac.  Seriously though, good people.
 
--Pretty much any developer who worked on any of the software we're using.
+-Anyone who worked on any of the software we're using.
 
--You guys.  It's the community that makes slashdiablo what it is.
-
-
-=========
-Donations
-=========
-
-Runes, gear, whatever.  I'm still building wealth in game since restarting after a year off.  Anything helps :D
-*online (on slashdiablo)
 
 
 ---------------
 Problem Solving
 ---------------
 
-Hit me up on reddit if you're really struggling and Lord Google can't help you.  I'll do what I can. On that note, 
-if you delve deep enough into google, the solution to your problem is probably out there.
-
-Reddit: iforgotthequestion
+If you delve deep enough into google, the solution to your problem is probably out there.
