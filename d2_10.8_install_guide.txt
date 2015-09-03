@@ -21,7 +21,7 @@ Purpose
 ------- 
 
 Our aim is to have a functional copy of Diablo 2 running with a working maphack and multiboxing
-abilities running in OSX 10.7 or 10.8 without need for virtualization software (other than wine) 
+abilities running in OSX 10.7 or higher without need for virtualization software (other than wine) 
 or dual booting.
 
 --------
@@ -35,9 +35,9 @@ We're going to need some tools:
 	Why we need this:
 	
 	Xcode (and the command line tools for it) adds support for programming languages that run
-	other software we will install (namely Macports and Homebrew).
+	other software we will install (namely Homebrew and Macports).
 
--Macports OR Homebrew installed (one and not the other, they can interfere with one another). I prefer homebrew, and this guide will rely on it.
+-Homebrew OR Macports installed (one and not the other, they can interfere with one another). I prefer homebrew, and this guide will rely on it.
 
 	Why we need this:
 	
@@ -50,7 +50,7 @@ We're going to need some tools:
 	Why we need this:
 	
 Wine is the "magic" that makes this whole process work.  Wine allows you to run *some* Windows
-software from the command line in OSX
+software from the command line in OSX.
 
 -XQuartz installed
 
@@ -79,13 +79,13 @@ If you plan on playing on a non-Battle.net server (private, or otherwise), this 
 
 	Why we need this:
 
-You can skip these if you just want a vanilla install (in which case I recommend just using Wineskin Winery or PlayOnMac), but the purpose of using wine specificially is to get these tools working.
+You can skip these if you just want a vanilla install (in which case I recommend just using Wineskin Winery or PlayOnMac), but the purpose of using wine specificially is to get these additional tools working.
 
 
 So, in totality, we need:
 
--Xcode with Command Line Tools installed (3.5 Gb available for free from Apple)
--Macports OR Homebrew installed (one and not the other, both free)
+-Xcode with Command Line Tools installed (3.5 Gb, available for free from Apple)
+-Homebrew OR Macports installed (one and not the other, both free)
 -Wine installed (free)
 -XQuartz installed (free)
 -A working *Windows* (.exe) version of Diablo 2 and LOD or the Windows downloaders from the 
@@ -97,7 +97,7 @@ Battle.net site  (free if you own a copy... otherwise I leave it up to your inte
 Brief Setup
 -----------
 
-I find it helpful to have OSX show hidden files (the .wine folder which we will discuss later is hidden).
+I find it helpful to have OSX show hidden files (the .wine folder which we will use later is a hidden folder).
 
 To do this, open a terminal and type:
 
@@ -107,10 +107,10 @@ Hit enter, then type
 
 	killall Finder
 
-This will restart Finder with hidden files shown.  (You may notice .ds_store and stuff show up 
-in every folder, that's fine for now).
+This will restart Finder with hidden files shown.  (You may notice .ds_store and other files starting with "." show up 
+in every folder, and that's fine).
 
-You can turn off hidden files by doing the above again but changing TRUE to FALSE
+You can turn off hidden files by doing the above again by changing TRUE to FALSE
 
 ----
 
@@ -142,7 +142,7 @@ I'll attempt to answer the ones I can think of as best we can so we're on the sa
 Q: Xcode is 3.5 gigabytes!  Do we need really this?
 
 A: In short, yes.  It's a necessary component of this guide, and there's no way around this. 
-Given that a bootcamp partition is a minimum 10-16 GB and a virtual machine with Windows & will 
+Given that a bootcamp partition is a minimum 10-16 GB and a virtual machine with Windows will 
 probably take up more than 3 Gb, this is actually a pretty good option.
 
 
@@ -160,7 +160,7 @@ Q: What the fuck?  My homebrew/macports installation is giving me errors about m
 
 (Hopefully this one doesn't come up)
 
-A:  I will try and cover this as best I can in the MacPorts/Homebrew section. 
+A:  I will try and cover this as best I can in the Homebrew/Macports section. 
 Google is your friend (that's how I solved problems that arose when I was figuring all this out).  
 So is stack overflow. 
 
@@ -169,7 +169,7 @@ So is stack overflow.
 III. XCode
 ==========
 
-Note: Newer versions of XCode should install the command line tools by default.  If not, try following steps 2-4.
+Note: Current versions of XCode should install the command line tools by default.  If not, try following steps 2-4.
 
 https://developer.apple.com/xcode/
 
@@ -190,7 +190,7 @@ IV. Homebrew *OR* Macports
 
 ONLY INSTALL HOMEBREW *OR* MACPORTS, NOT BOTH
 
-I prefer homebrew
+I prefer homebrew.
 
 This tutorial is great, and we will be following it for the install of homebrew, wine, and xquartz:
 http://www.davidbaumgold.com/tutorials/wine-mac/#part-0
@@ -228,7 +228,6 @@ you type):
 	$brew install wine
 	
 Note: XQuartz has been dropped in newer versions of OSX (10.10, and potentially 10.9).  Homebrew *should* prompt you to install it during installation, so use the commands provided by homebrew in the terminal to install it, then go back and install wine.	
-
 With macports:
 
 	$sudo port install wine
@@ -240,7 +239,7 @@ Hopefully this all goes smoothly.  If not, google.
 VI. XQuartz
 ===========
 
-Note: In trying to access this site recently, I have been unable to reach the server.  Homebrew should install xquartz during its own installation (see V.), and so you can likely skip these steps.
+Note: In trying to access this site recently, I have been unable to reach the server.  Homebrew should install xquartz during its own installation (see V.), and so you can likely skip these steps.  If you're using macports, I will assume you are competent enough to figure out any snags yourself.
 
 http://xquartz.macosforge.org/landing/
 
@@ -277,15 +276,14 @@ downloader (not LoD) into your terminal and drop it there.
 
 	It should look something like this:
 	
-	online~:online$ wine /Users/will/Downloads/D2_loader.exe 
+	online~:online$ wine /Users/online/Downloads/D2_loader.exe 
 
 	(the file has a slightly different name from this, but you get the idea)
 
 5. Hit enter.  The downloader should run.  If prompted for an install directory, you want to put
 it in "Program Files" in the C drive.
  
-Wait for it to finish, and install when it prompts you to.  (Remember those cd keys you cut and 
-pasted?  To paste them in an XQuartz window it's control + v rather than command + v)
+Wait for it to finish, and install when it prompts you to.  (Remember those cd keys you copied?  To paste them in an XQuartz window it's control + v rather than command + v)
 
 6.  Repeat for the expansion.
 
@@ -330,16 +328,16 @@ http://www.icyhell.net/2008/05/06/blizzard-battlenet-gateway-editor-v3010702/
 2. Open a terminal window and type wine and then drop the gateway editor's .exe onto the terminal
 window and hit enter.
 
-3. The editor should start up.  Add a new gateway for your private server if going that route and make sure it's the default
-(I deleted my bnet gateways because I didn't see a need to keep them, and that way I know I'm always connecting to slash)
+3. The editor should start up.  Add a new gateway for your private server if going that route, and make sure it's the default
+(I deleted my bnet gateways because I didn't see a need to keep them, and that way I know I'm always connecting to the private server of my choice)
 
 Note: Server settings for SlashDiablo (reddit private server):
 
-name: *whatever you like*
+name: *whatever you like* (mine is "SlashD")
 zone: -8
 server ip: slashd.verris.ca
 
-4. Close the editor  (You shouldn't need it again.
+4. Close the editor (You shouldn't need it again).
 
 ================================
 IX. Installing Maphack and Multi
